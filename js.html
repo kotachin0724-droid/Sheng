@@ -1,18 +1,782 @@
-<HTML>
-<HEAD>
-<title>今天練習的java Script</title>
-</HEAD>
-<BODY onclick="document.body.style.background='#185547'">
-<hl>今天練習的java Script</hl>
-<button onclick="sayhi()">請按按我</button>
-<script>
+<html lang="zh-TW" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO-VOGUE // 2077 CYBER FASHION</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#05050a',
+                            surface: '#0f0f1a',
+                            card: '#131324',
+                            primary: '#00f2fe',
+                            secondary: '#4facfe',
+                            accent: '#ff007f',
+                            purple: '#9d4edd',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-blue': '0 0 20px rgba(0, 242, 254, 0.4)',
+                        'neon-pink': '0 0 25px rgba(255, 0, 127, 0.5)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- Custom CSS Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #05050a;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .font-cyber {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(19, 19, 36, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(25, 25, 45, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 242, 254, 0.4);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.15);
+        }
+        /* Neon Glow Effects */
+        .text-glow-blue {
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.4);
+        }
+        .text-glow-pink {
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.7), 0 0 20px rgba(255, 0, 127, 0.4);
+        }
+        .bg-gradient-cyber {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #ff007f 100%);
+        }
+        .bg-gradient-border {
+            background: linear-gradient(90deg, #00f2fe, #ff007f);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05050a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f1f3a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f2fe;
+        }
+        /* Background Animated Glow Spheres */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        .animate-float {
+            animation: float-slow 8s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float-slow 10s ease-in-out infinite 3s;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen selection:bg-cyber-primary selection:text-black">
 
-function sayhi(){
+    <!-- Ambient Cyber Glow Backgrounds -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-float"></div>
+    <div class="fixed bottom-10 right-1/4 w-[30rem] h-[30rem] bg-pink-600/10 rounded-full blur-3xl pointer-events-none animate-float-delayed"></div>
 
-alert("今天好開心來寫網頁程式!!Happy!!");
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-10 h-10 rounded-xl bg-gradient-cyber p-0.5 flex items-center justify-center shadow-neon-blue">
+                    <div class="w-full h-full bg-cyber-bg rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid fa-cube text-cyber-primary text-lg animate-pulse"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-cyber font-black text-xl tracking-wider bg-gradient-to-r from-cyber-primary via-white to-cyber-accent bg-clip-text text-transparent">NEO-VOGUE</span>
+                    <span class="block text-[10px] tracking-widest text-cyber-primary/70 uppercase">Cyberpunk Couture</span>
+                </div>
+            </div>
 
-}
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#products" class="hover:text-cyber-primary transition-colors">精選系列</a>
+                <a href="#countdown" class="hover:text-cyber-primary transition-colors flex items-center gap-1.5"><i class="fa-solid fa-bolt text-cyber-accent"></i> 閃購限時</a>
+                <a href="#features" class="hover:text-cyber-primary transition-colors">核心科技</a>
+                <a href="#about" class="hover:text-cyber-primary transition-colors">品牌理念</a>
+            </nav>
 
-</script>
-</BODY>
-</HTML>
+            <!-- Actions & Cart Button -->
+            <div class="flex items-center space-x-4">
+                <!-- User Profile Icon -->
+                <button class="hidden sm:flex w-10 h-10 rounded-xl glass-card items-center justify-center text-gray-300 hover:text-cyber-primary hover:border-cyber-primary/50 transition-all">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+
+                <!-- Super Slick Floating Cart Button -->
+                <button id="cartToggleBtn" onclick="toggleCart()" class="relative group flex items-center space-x-3 px-5 py-2.5 rounded-2xl bg-gradient-cyber p-[1px] shadow-neon-blue transition-all duration-300 hover:scale-105 active:scale-95">
+                    <div class="flex items-center space-x-2.5 px-4 py-1.5 bg-cyber-bg rounded-[15px] transition-all group-hover:bg-opacity-80">
+                        <div class="relative">
+                            <i class="fa-solid fa-cart-shopping text-cyber-primary text-lg transition-transform group-hover:rotate-12"></i>
+                            <!-- Cart Badge Count -->
+                            <span id="cartBadge" class="absolute -top-2 -right-3 w-5 h-5 bg-cyber-accent text-white text-[11px] font-bold rounded-full flex items-center justify-center shadow-neon-pink animate-bounce">0</span>
+                        </div>
+                        <span class="font-cyber font-bold text-xs tracking-wider text-white hidden sm:inline">購物車</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full glass-panel border border-cyber-primary/30 text-cyber-primary text-xs font-semibold tracking-wider uppercase shadow-neon-blue">
+                    <i class="fa-solid fa-sparkles animate-spin"></i>
+                    <span>2077 年秋季未來時尚趨勢發表</span>
+                </div>
+                <h1 class="font-cyber font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-none">
+                    定義未來的 <br>
+                    <span class="bg-gradient-to-r from-cyber-primary via-cyber-secondary to-cyber-accent bg-clip-text text-transparent text-glow-blue">極致潮流科技</span>
+                </h1>
+                <p class="text-gray-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
+                    結合生化織物、奈米發光纖維與頂級防護科技，打造跨越次元的奢華美學。每一次穿搭，都是一場對現實的叛逆。
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-cyber text-black font-cyber font-bold text-sm tracking-widest shadow-neon-blue hover:opacity-90 transition-all text-center flex items-center justify-center gap-2">
+                        <span>立即探索裝備</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#countdown" class="w-full sm:w-auto px-8 py-4 rounded-2xl glass-card text-white font-cyber font-bold text-sm tracking-wider hover:border-cyber-primary transition-all text-center">
+                        查看限量特賣
+                    </a>
+                </div>
+                <!-- Mini Stats -->
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+                    <div>
+                        <div class="font-cyber font-bold text-2xl text-cyber-primary">100+</div>
+                        <div class="text-xs text-gray-500">未來主義設計</div>
+                    </div>
+                    <div>
+                        <div class="font-cyber font-bold text-2xl text-cyber-secondary">24H</div>
+                        <div class="text-xs text-gray-500">量子全速配送</div>
+                    </div>
+                    <div>
+                        <div class="font-cyber font-bold text-2xl text-cyber-accent">99.9%</div>
+                        <div class="text-xs text-gray-500">全球潮流好評</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Hero 3D Card Showcase -->
+            <div class="lg:col-span-5 flex justify-center relative">
+                <div class="relative w-full max-w-md aspect-square rounded-3xl glass-panel p-4 shadow-2xl border border-cyber-primary/20 group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyber-primary/10 to-cyber-accent/10 rounded-3xl filter blur-xl"></div>
+                    <div class="relative w-full h-full rounded-2xl overflow-hidden bg-[#0c0c17] flex items-center justify-center border border-white/10">
+                        <!-- Hologram Product Visual -->
+                        <img src="https://placehold.co/600x600/131324/00f2fe?text=NEO-CYBER+JACKET" alt="Cyberpunk Jacket" class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-transparent to-transparent opacity-80"></div>
+                        <!-- Floating Badge -->
+                        <div class="absolute top-4 left-4 px-3 py-1 rounded-xl glass-panel text-cyber-primary text-xs font-cyber tracking-wider border border-cyber-primary/30">
+                            ✨ 熱銷第一
+                        </div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <div class="text-xs text-cyber-secondary uppercase tracking-widest font-semibold">Limited Edition</div>
+                            <div class="font-cyber font-bold text-xl text-white">電馭叛客發光防護夾克</div>
+                            <div class="text-cyber-primary font-bold text-lg mt-1">NT$ 8,880</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Sale / Countdown Banner -->
+    <section id="countdown" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="relative rounded-3xl glass-card overflow-hidden p-8 sm:p-12 border border-cyber-accent/30 shadow-neon-pink">
+            <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-cyber-accent/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-6 space-y-4">
+                    <div class="inline-flex items-center gap-2 text-cyber-accent font-cyber text-sm tracking-widest uppercase">
+                        <i class="fa-solid fa-fire-flame-curved"></i> 閃購限時特惠 // FLASH SALE
+                    </div>
+                    <h2 class="font-cyber font-black text-3xl sm:text-4xl text-white">暗夜潛行者尊爵套組</h2>
+                    <p class="text-gray-400 text-sm sm:text-base">全套配備包含光導防風鏡、生化機能外衣與電磁戰術靴，限時搶購，倒數結束立即恢復原價。</p>
+                    <!-- Countdown Timers -->
+                    <div class="flex items-center gap-4 pt-2">
+                        <div class="px-4 py-3 rounded-xl glass-panel border border-white/10 text-center min-w-[70px]">
+                            <div id="hours" class="font-cyber font-bold text-2xl text-cyber-primary">05</div>
+                            <div class="text-[10px] text-gray-400 uppercase tracking-wider">小時</div>
+                        </div>
+                        <span class="text-2xl font-bold text-cyber-primary">:</span>
+                        <div class="px-4 py-3 rounded-xl glass-panel border border-white/10 text-center min-w-[70px]">
+                            <div id="minutes" class="font-cyber font-bold text-2xl text-cyber-secondary">42</div>
+                            <div class="text-[10px] text-gray-400 uppercase tracking-wider">分鐘</div>
+                        </div>
+                        <span class="text-2xl font-bold text-cyber-primary">:</span>
+                        <div class="px-4 py-3 rounded-xl glass-panel border border-white/10 text-center min-w-[70px]">
+                            <div id="seconds" class="font-cyber font-bold text-2xl text-cyber-accent">19</div>
+                            <div class="text-[10px] text-gray-400 uppercase tracking-wider">秒</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 flex justify-center">
+                    <div class="w-full max-w-sm glass-panel p-6 rounded-2xl border border-cyber-accent/40 relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs text-gray-400">特惠組合包</span>
+                            <span class="px-2.5 py-1 rounded-full bg-cyber-accent/20 text-cyber-accent font-bold text-xs">省 NT$ 3,000</span>
+                        </div>
+                        <div class="font-cyber font-bold text-xl text-white mb-2">極速幻影全套戰術組合</div>
+                        <div class="flex items-baseline gap-3 mb-6">
+                            <span class="font-cyber font-black text-3xl text-cyber-primary">NT$ 12,800</span>
+                            <span class="text-gray-500 line-through text-sm">NT$ 15,800</span>
+                        </div>
+                        <button onclick="addFlashSaleToCart()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyber-accent to-pink-600 text-white font-cyber font-bold text-sm tracking-wider shadow-neon-pink hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>立即搶購組合包</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Catalog Section -->
+    <section id="products" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <div>
+                <div class="text-cyber-primary font-cyber text-xs tracking-widest uppercase mb-2">NEO-CATALOG // 精選潮流裝備</div>
+                <h2 class="font-cyber font-black text-3xl sm:text-4xl text-white">探索尖端時尚單品</h2>
+            </div>
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap gap-2" id="filterTabs">
+                <button onclick="filterProducts('all', this)" class="px-4 py-2 rounded-xl text-xs font-cyber font-semibold tracking-wider bg-cyber-primary text-black transition-all shadow-neon-blue filter-btn">全部裝備</button>
+                <button onclick="filterProducts('apparel', this)" class="px-4 py-2 rounded-xl text-xs font-cyber font-semibold tracking-wider glass-card text-gray-300 hover:text-white transition-all filter-btn">生化外衣</button>
+                <button onclick="filterProducts('gear', this)" class="px-4 py-2 rounded-xl text-xs font-cyber font-semibold tracking-wider glass-card text-gray-300 hover:text-white transition-all filter-btn">戰術配件</button>
+                <button onclick="filterProducts('footwear', this)" class="px-4 py-2 rounded-xl text-xs font-cyber font-semibold tracking-wider glass-card text-gray-300 hover:text-white transition-all filter-btn">磁浮鞋履</button>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamically Rendered via JS -->
+        </div>
+    </section>
+
+    <!-- Brand Features -->
+    <section id="features" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-3xl space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-cyber-primary/10 border border-cyber-primary/30 flex items-center justify-center text-cyber-primary text-xl">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="font-cyber font-bold text-xl text-white">量子防護布料</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">採用專利奈米碳纖維，具備極高抗撕裂強度與全天候智能溫控調節。</p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-cyber-secondary/10 border border-cyber-secondary/30 flex items-center justify-center text-cyber-secondary text-xl">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h3 class="font-cyber font-bold text-xl text-white">全球光速配送</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">透過自動化物流與無人機網絡，確保商品在 24 小時內安全送達您手中。</p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-cyber-accent/10 border border-cyber-accent/30 flex items-center justify-center text-cyber-accent text-xl">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <h3 class="font-cyber font-bold text-xl text-white">NFC 數位身份認證</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">每件服飾均內嵌加密晶片，可對應元宇宙數位資產與限量身份憑證。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar Drawer (Glassmorphic) -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCart()"></div>
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-full sm:w-[450px] glass-panel border-l border-white/10 z-50 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col shadow-2xl">
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-white/10 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-cyber p-0.5 flex items-center justify-center">
+                    <div class="w-full h-full bg-cyber-bg rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid fa-cart-shopping text-cyber-primary text-sm"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-cyber font-bold text-lg text-white">您的戰術購物車</h3>
+                    <p class="text-xs text-gray-400" id="cartItemCountSub">0 件商品</p>
+                </div>
+            </div>
+            <button onclick="toggleCart()" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-gray-400 hover:text-white hover:border-cyber-primary transition-all">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items Container -->
+        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-white/5">
+            <!-- Dynamically populated items or empty state -->
+        </div>
+
+        <!-- Drawer Footer / Summary -->
+        <div class="p-6 border-t border-white/10 glass-panel space-y-4">
+            <div class="space-y-2 text-sm">
+                <div class="flex justify-between text-gray-400">
+                    <span>商品總計</span>
+                    <span id="cartSubtotal" class="font-cyber text-white">NT$ 0</span>
+                </div>
+                <div class="flex justify-between text-gray-400">
+                    <span>量子配送費</span>
+                    <span class="text-cyber-primary font-cyber">免費</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold pt-2 border-t border-white/10">
+                    <span class="text-white">總金額</span>
+                    <span id="cartTotal" class="font-cyber text-cyber-primary text-glow-blue">NT$ 0</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button onclick="clearCart()" class="py-3 rounded-xl glass-card text-gray-300 font-cyber font-bold text-xs tracking-wider hover:text-cyber-accent hover:border-cyber-accent transition-all">
+                    清空購物車
+                </button>
+                <button onclick="checkout()" class="py-3 rounded-xl bg-gradient-cyber text-black font-cyber font-bold text-xs tracking-wider shadow-neon-blue hover:opacity-90 transition-all flex items-center justify-center gap-1.5">
+                    <span>確認結帳</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Modal -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass-panel border border-cyber-primary/50 shadow-neon-blue px-6 py-4 rounded-2xl flex items-center space-x-3 bg-cyber-bg/90">
+            <div id="toastIcon" class="w-8 h-8 rounded-xl bg-cyber-primary/20 text-cyber-primary flex items-center justify-center">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <div id="toastTitle" class="font-cyber font-bold text-sm text-white">操作成功</div>
+                <div id="toastMessage" class="text-xs text-gray-400">商品已成功加入購物車</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="about" class="bg-cyber-surface border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8 mt-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-xl bg-gradient-cyber p-0.5 flex items-center justify-center">
+                        <div class="w-full h-full bg-cyber-bg rounded-[10px] flex items-center justify-center">
+                            <i class="fa-solid fa-cube text-cyber-primary text-sm"></i>
+                        </div>
+                    </div>
+                    <span class="font-cyber font-black text-lg tracking-wider text-white">NEO-VOGUE</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    引領 2077 年未來科技美學與頂級潮流服飾的先驅品牌，專為不甘平凡的靈魂打造。
+                </p>
+            </div>
+            <div>
+                <h4 class="font-cyber font-bold text-sm text-white uppercase tracking-wider mb-4">快速導航</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#products" class="hover:text-cyber-primary transition-colors">精選系列商品</a></li>
+                    <li><a href="#countdown" class="hover:text-cyber-primary transition-colors">限時閃購專區</a></li>
+                    <li><a href="#features" class="hover:text-cyber-primary transition-colors">科技工藝解析</a></li>
+                    <li><a href="#" class="hover:text-cyber-primary transition-colors">VIP 會員俱樂部</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-cyber font-bold text-sm text-white uppercase tracking-wider mb-4">客戶支援</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#" class="hover:text-cyber-primary transition-colors">量子物流追蹤</a></li>
+                    <li><a href="#" class="hover:text-cyber-primary transition-colors">退換貨服務政策</a></li>
+                    <li><a href="#" class="hover:text-cyber-primary transition-colors">加密安全支付</a></li>
+                    <li><a href="#" class="hover:text-cyber-primary transition-colors">聯繫客服機器人</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-cyber font-bold text-sm text-white uppercase tracking-wider mb-4">訂閱未來情報</h4>
+                <p class="text-xs text-gray-400 mb-3">搶先獲得限量新品發售通知與專屬折價代碼。</p>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="您的電子信箱..." class="w-full bg-cyber-bg border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyber-primary transition-all">
+                    <button onclick="showToast('訂閱成功', '感謝您訂閱 NEO-VOGUE 未來情報網')" class="px-4 py-2.5 rounded-xl bg-gradient-cyber text-black font-cyber font-bold text-xs shadow-neon-blue hover:opacity-90 transition-all">
+                        訂閱
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+            <div>&copy; 2077 NEO-VOGUE Inc. All Rights Reserved. Designed for the Future.</div>
+            <div class="flex space-x-6 mt-4 sm:mt-0">
+                <a href="#" class="hover:text-cyber-primary transition-colors"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+                <a href="#" class="hover:text-cyber-primary transition-colors"><i class="fa-brands fa-discord text-sm"></i></a>
+                <a href="#" class="hover:text-cyber-primary transition-colors"><i class="fa-brands fa-instagram text-sm"></i></a>
+                <a href="#" class="hover:text-cyber-primary transition-colors"><i class="fa-brands fa-github text-sm"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Products Database
+        const products = [
+            {
+                id: 1,
+                name: '電馭叛客發光防護夾克',
+                category: 'apparel',
+                price: 8880,
+                originalPrice: 10800,
+                tag: '熱銷爆款',
+                image: 'https://placehold.co/600x600/131324/00f2fe?text=Cyber+Jacket',
+                desc: '內建可編程霓虹燈條與防彈奈米纖維，夜晚街頭最耀眼的焦點。'
+            },
+            {
+                id: 2,
+                name: '量子動力反重力戰術靴',
+                category: 'footwear',
+                price: 6500,
+                originalPrice: 7800,
+                tag: '限量發售',
+                image: 'https://placehold.co/600x600/131324/4facfe?text=Anti-Gravity+Boots',
+                desc: '搭載微型磁浮懸吊系統，行走如御風而行，全天候動能回饋。'
+            },
+            {
+                id: 3,
+                name: '生化多功能全息戰術背包',
+                category: 'gear',
+                price: 4200,
+                originalPrice: 5000,
+                tag: '新品上市',
+                image: 'https://placehold.co/600x600/131324/ff007f?text=Hologram+Bag',
+                desc: '內建太陽能蓄電面板與全息投影顯示介面，防潑水高強度裝甲外殼。'
+            },
+            {
+                id: 4,
+                name: '霓虹脈衝防護護目鏡',
+                category: 'gear',
+                price: 3100,
+                originalPrice: 3900,
+                tag: '熱門配件',
+                image: 'https://placehold.co/600x600/131324/9d4edd?text=Cyber+Visor',
+                desc: '即時 AR 數據疊加顯示，具備自動感光變色與防強光眩目功能。'
+            },
+            {
+                id: 5,
+                name: '暗夜潛行機能連帽衛衣',
+                category: 'apparel',
+                price: 3990,
+                originalPrice: 4800,
+                tag: '街頭潮流',
+                image: 'https://placehold.co/600x600/131324/00f2fe?text=Cyber+Hoodie',
+                desc: '特殊吸光呢絨面料，兼具極佳的舒適透氣性與未來街頭解構剪裁。'
+            },
+            {
+                id: 6,
+                name: '鈦金機械感機能戰術手套',
+                category: 'gear',
+                price: 1980,
+                originalPrice: 2500,
+                tag: '人氣精選',
+                image: 'https://placehold.co/600x600/131324/4facfe?text=Tactical+Gloves',
+                desc: '指尖奈米導電纖維，支援各類全息螢幕觸控操作，關節鈦金加固。'
+            }
+        ];
+
+        // Cart State
+        let cart = [];
+
+        // DOM Elements
+        const productGrid = document.getElementById('productGrid');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartBadge = document.getElementById('cartBadge');
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        const cartSubtotal = document.getElementById('cartSubtotal');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartItemCountSub = document.getElementById('cartItemCountSub');
+
+        // Render Products
+        function renderProducts(filter = 'all') {
+            productGrid.innerHTML = '';
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-3xl overflow-hidden group flex flex-col justify-between';
+                card.innerHTML = `
+                    <div class="relative aspect-square overflow-hidden bg-[#0c0c17]">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-xl glass-panel text-cyber-primary text-[11px] font-cyber tracking-wider border border-cyber-primary/30">
+                            ${product.tag}
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
+                        <div>
+                            <h3 class="font-cyber font-bold text-lg text-white group-hover:text-cyber-primary transition-colors">${product.name}</h3>
+                            <p class="text-gray-400 text-xs mt-1 leading-relaxed">${product.desc}</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                            <div>
+                                <span class="font-cyber font-black text-xl text-white">NT$ ${product.price.toLocaleString()}</span>
+                                <span class="text-gray-500 line-through text-xs ml-2">NT$ ${product.originalPrice.toLocaleString()}</span>
+                            </div>
+                            <button onclick="addToCart(${product.id})" class="w-11 h-11 rounded-xl bg-gradient-cyber p-0.5 shadow-neon-blue transition-transform hover:scale-110 active:scale-95">
+                                <div class="w-full h-full bg-cyber-bg rounded-[10px] flex items-center justify-center text-cyber-primary hover:bg-cyber-primary hover:text-black transition-colors">
+                                    <i class="fa-solid fa-cart-plus text-sm"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        // Filter Products
+        function filterProducts(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.className = 'px-4 py-2 rounded-xl text-xs font-cyber font-semibold tracking-wider glass-card text-gray-300 hover:text-white transition-all filter-btn';
+            });
+            btn.className = 'px-4 py-2 rounded-xl text-xs font-cyber font-semibold tracking-wider bg-cyber-primary text-black transition-all shadow-neon-blue filter-btn';
+            renderProducts(category);
+        }
+
+        // Toggle Cart Sidebar
+        function toggleCart() {
+            const isOpen = cartSidebar.classList.contains('translate-x-0');
+            if (isOpen) {
+                cartSidebar.classList.remove('translate-x-0');
+                cartSidebar.classList.add('translate-x-full');
+                cartOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+                cartOverlay.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                cartSidebar.classList.remove('translate-x-full');
+                cartSidebar.classList.add('translate-x-0');
+                cartOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                cartOverlay.classList.add('opacity-100', 'pointer-events-auto');
+                renderCartItems();
+            }
+        }
+
+        // Add to Cart
+        function addToCart(productId, quantity = 1) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity: quantity });
+            }
+
+            updateCartBadge();
+            showToast('加入購物車成功', `已將 ${product.name} 加入您的戰術購物車`);
+            
+            // Pulse cart button animation
+            const cartBtn = document.getElementById('cartToggleBtn');
+            cartBtn.classList.add('scale-110');
+            setTimeout(() => cartBtn.classList.remove('scale-110'), 300);
+        }
+
+        // Add Flash Sale item
+        function addFlashSaleToCart() {
+            const flashItem = {
+                id: 999,
+                name: '極速幻影全套戰術組合包',
+                price: 12800,
+                image: 'https://placehold.co/600x600/131324/ff007f?text=Flash+Bundle'
+            };
+            const existing = cart.find(item => item.id === 999);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...flashItem, quantity: 1 });
+            }
+            updateCartBadge();
+            showToast('限時閃購商品加入成功', '您已成功搶購暗夜潛行者尊爵套組！');
+        }
+
+        // Update Cart Badge Count
+        function updateCartBadge() {
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.textContent = totalCount;
+        }
+
+        // Render Cart Items inside Drawer
+        function renderCartItems() {
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center space-y-4 py-16">
+                        <div class="w-16 h-16 rounded-2xl glass-card flex items-center justify-center text-gray-500 text-2xl">
+                            <i class="fa-solid fa-cart-arrow-down"></i>
+                        </div>
+                        <div class="font-cyber font-bold text-white text-base">購物車目前是空的</div>
+                        <p class="text-gray-400 text-xs max-w-xs">快去探索 2077 年的尖端潮流單品，添購您的專屬裝備吧！</p>
+                    </div>
+                `;
+                cartSubtotal.textContent = 'NT$ 0';
+                cartTotal.textContent = 'NT$ 0';
+                cartItemCountSub.textContent = '0 件商品';
+                return;
+            }
+
+            let subtotal = 0;
+            let totalCount = 0;
+
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+                totalCount += item.quantity;
+
+                const itemEl = document.createElement('div');
+                itemEl.className = 'flex items-center space-x-4 pt-4 first:pt-0';
+                itemEl.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-xl object-cover bg-cyber-bg border border-white/10">
+                    <div class="flex-1">
+                        <h4 class="font-cyber font-bold text-sm text-white line-clamp-1">${item.name}</h4>
+                        <div class="text-cyber-primary font-cyber font-bold text-xs mt-1">NT$ ${item.price.toLocaleString()}</div>
+                        <div class="flex items-center space-x-3 mt-2">
+                            <div class="flex items-center border border-white/10 rounded-lg overflow-hidden bg-cyber-bg">
+                                <button onclick="updateQuantity(${item.id}, -1)" class="px-2.5 py-1 text-gray-400 hover:text-white hover:bg-white/5 transition-colors">-</button>
+                                <span class="px-3 text-xs font-cyber text-white">${item.quantity}</span>
+                                <button onclick="updateQuantity(${item.id}, 1)" class="px-2.5 py-1 text-gray-400 hover:text-white hover:bg-white/5 transition-colors">+</button>
+                            </div>
+                            <button onclick="removeItem(${item.id})" class="text-gray-500 hover:text-cyber-accent transition-colors text-xs">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemEl);
+            });
+
+            cartSubtotal.textContent = `NT$ ${subtotal.toLocaleString()}`;
+            cartTotal.textContent = `NT$ ${subtotal.toLocaleString()}`;
+            cartItemCountSub.textContent = `${totalCount} 件商品`;
+        }
+
+        // Update Item Quantity
+        function updateQuantity(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+                updateCartBadge();
+                renderCartItems();
+            }
+        }
+
+        // Remove Item
+        function removeItem(id) {
+            cart = cart.filter(i => i.id !== id);
+            updateCartBadge();
+            renderCartItems();
+            showToast('已移除商品', '該裝備已從購物車中移除');
+        }
+
+        // Clear Cart
+        function clearCart() {
+            cart = [];
+            updateCartBadge();
+            renderCartItems();
+            showToast('購物車已清空', '所有戰術裝備已清空');
+        }
+
+        // Checkout Simulation
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('購物車是空的', '請先加入商品再進行結帳', 'error');
+                return;
+            }
+            toggleCart();
+            showToast('🎉 結帳成功！', '量子訂單已成立，正透過無人機全速配送中');
+            cart = [];
+            updateCartBadge();
+        }
+
+        // Toast Notification Helper
+        function showToast(title, message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+
+            if (type === 'error') {
+                toastIcon.className = 'w-8 h-8 rounded-xl bg-cyber-accent/20 text-cyber-accent flex items-center justify-center';
+                toastIcon.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+            } else {
+                toastIcon.className = 'w-8 h-8 rounded-xl bg-cyber-primary/20 text-cyber-primary flex items-center justify-center';
+                toastIcon.innerHTML = '<i class="fa-solid fa-check"></i>';
+            }
+
+            toast.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        // Countdown Timer Logic
+        function startCountdown() {
+            let hours = 5, minutes = 42, seconds = 19;
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                        if (hours < 0) hours = 24;
+                    }
+                }
+                document.getElementById('hours.').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderProducts();
+            startCountdown();
+        };
+    </script>
+</body>
+</html>
